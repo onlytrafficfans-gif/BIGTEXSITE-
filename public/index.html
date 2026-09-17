@@ -72,6 +72,7 @@
       <div class="header-actions">
         <button class="mobile-discover-btn" data-view="discover" aria-label="Discover people"><span>⌕</span><b>Discover</b></button>
         <button class="mobile-message-btn" data-view="messages" aria-label="Messages">✉</button>
+        <button class="icon-btn notif-btn" data-view="notifications" aria-label="Notifications">🔔<span id="notifBadgeTop" class="notif-badge hidden">0</span></button>
         <button id="newPostTop" class="icon-btn" aria-label="Create post">＋</button>
         <button id="logoutTop" class="icon-btn" aria-label="Log out">↪</button>
       </div>
@@ -84,6 +85,7 @@
         <button class="nav-btn" data-view="reels"><span>▶</span><b>Reels</b></button>
         <button class="nav-btn" data-view="discover"><span>⌕</span><b>Discover</b></button>
         <button class="nav-btn" data-view="messages"><span>✉</span><b>Messages</b></button>
+        <button class="nav-btn notif-btn" data-view="notifications"><span>🔔</span><b>Notifications</b><span id="notifBadgeSide" class="notif-badge hidden">0</span></button>
         <button id="newPostSide" class="nav-btn"><span>＋</span><b>Create</b></button>
         <button class="nav-btn" data-view="profile"><span>◎</span><b>Profile</b></button>
       </nav>
@@ -124,6 +126,12 @@
 
       <section id="profileView" class="screen hidden">
         <div id="profilePanel"></div>
+      </section>
+
+      <section id="notificationsView" class="screen hidden">
+        <div class="feed-title-row"><h1>Notifications</h1><button id="markAllReadBtn" class="text-btn">Mark all read</button></div>
+        <div id="notificationsList" class="notifications-list"></div>
+        <div id="notificationsEmpty" class="empty hidden"><h2>No notifications yet</h2><p>Follows, likes, comments, and messages will show up here.</p></div>
       </section>
     </main>
 

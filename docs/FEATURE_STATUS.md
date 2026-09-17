@@ -22,14 +22,14 @@ infra).
 | Messaging | Yes | Yes (membership RLS, new) | Yes (`conversation_members`, new) | `tests/rls.test.sql` | COMPLETE (polling, not realtime) |
 | Music attachment | Yes | Yes (public iTunes API, no secrets needed) | Yes | Manual | COMPLETE |
 | Live streaming | Yes | Yes (P2P WebRTC + Realtime signaling) | Yes | Manual | PARTIAL — no TURN/SFU, won't scale past small audiences |
-| Notifications | No | Yes (new) | Yes (new) | `tests/rls.test.sql` | MISSING (frontend) |
+| Notifications | Yes (bell + badge + list + mark-all-read, new) | Yes (new) | Yes (new) | `tests/rls.test.sql` + manual DOM check | COMPLETE |
 | Saved posts | No | Yes (new) | Yes (new) | `tests/rls.test.sql` | MISSING (frontend) |
-| Blocking | No | Yes (new, affects feed/follow/DM) | Yes (new) | `tests/rls.test.sql` | MISSING (frontend) |
+| Blocking | Yes (Block button on other users' profiles, new) | Yes (new, affects feed/follow/DM) | Yes (new) | `tests/rls.test.sql` + manual DOM check | COMPLETE |
 | Reporting (posts) | Yes | Yes | Yes | Manual | COMPLETE |
 | Reporting (users/comments) | No | Yes (new columns) | Yes (new) | — | MISSING (frontend) |
 | Moderation roles/queue | No | Yes (role column + RLS, new) | Yes (new) | — | MISSING (frontend; brief says don't overbuild admin UI yet) |
-| Account deactivation | No | Yes (RPCs, new) | Yes (new) | — | MISSING (frontend) |
-| Account deletion | No | Yes (Edge Function, new) | Yes (cascade) | — | MISSING (frontend) |
+| Account deactivation | Yes (button on own profile, new) | Yes (RPCs, new) | Yes (new) | Manual DOM check | COMPLETE |
+| Account deletion | Yes (button on own profile, calls Edge Function, new) | Yes (Edge Function, new) | Yes (cascade) | Manual DOM check | COMPLETE |
 | Rate limiting | N/A | Yes (new) | Yes (new) | `tests/rls.test.sql` | COMPLETE |
 | CI (lint/typecheck/tests/build) | — | — | — | `.github/workflows/ci.yml` | COMPLETE |
 
@@ -63,3 +63,17 @@ infra).
 - **Not tested against the live production Supabase project** — this
   session has no credentials for `iwnbsslhdqqhoocmfrik`. See
   `docs/SITE_AUDIT.md` §6 for the required steps before that happens.
+- **New frontend additions** (notifications bell/list, block button, account
+  deactivate/delete buttons in `public/js/app.js` and `public/index.html`):
+  syntax-checked (`node --check`), confirmed to render with no new console
+  errors and no duplicate DOM ids via the same headless-Chromium check used
+  for the base page, and every new Supabase call
+  (`sb.from('notifications')`, `sb.rpc('mark_all_notifications_read')`,
+  `sb.rpc('deactivate_my_account')`, `sb.functions.invoke('delete-account')`,
+  `sb.from('blocks').insert(...)`) matches an RPC/table/function name that
+  actually exists in `supabase/migrations/`. Not exercised against a live
+  logged-in session (same credential limitation as above) — recommended
+  smoke test before merging: sign up a test account, confirm the bell badge
+  updates after another account follows/likes/comments, confirm Block
+  actually removes the blocked user's posts from the feed, confirm
+  deactivate + delete both sign the user out.

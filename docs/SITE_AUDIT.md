@@ -164,11 +164,13 @@ No bookmark/save button anywhere in the shipped HTML. Added as
 - Realtime delivery is not used for messages today — the client polls, not
   a `postgres_changes` subscription. Documented as a follow-up.
 
-### Notifications — **MISSING** (no UI, no table)
-No bell icon, no notification list anywhere in the shipped HTML/CSS. Added
-full backend (`notifications` table + trigger fan-out on follow/like/comment
-/message) in this repo so a notifications UI can be added purely as a
-frontend change against a working API.
+### Notifications — **MISSING at audit time, now FIXED**
+No bell icon, no notification list anywhere in the originally shipped
+HTML/CSS. This repo added the full backend (`notifications` table + trigger
+fan-out on follow/like/comment/message) and, in the same pass, a bell
+icon with an unread badge, a notifications list view, and "mark all read"
+in `public/index.html`/`public/js/app.js` — see `docs/FEATURE_STATUS.md`
+for how it was verified.
 
 ### Reporting — PARTIAL
 - Reporting a **post** is real (`app.js:207-209`, inserts into `reports`
@@ -183,12 +185,12 @@ frontend change against a working API.
   visibility/resolution on that role, so a moderation queue UI has
   something real to call.
 
-### Blocking — **MISSING** (no UI, no table)
-No block button anywhere in the shipped HTML. Added `blocks` table with RLS
-that already affects **feed visibility, follow/unfollow, and new DM thread
-creation** the moment a row is inserted (`0002_security_rls.sql`,
-`0004_notifications_blocking.sql`), so this is real enforcement, not a stub,
-ready for a "Block" button to be added to the profile view.
+### Blocking — **MISSING at audit time, now FIXED**
+No block button anywhere in the originally shipped HTML. This repo added a
+`blocks` table with RLS that affects **feed visibility, follow/unfollow,
+and new DM thread creation** the moment a row is inserted
+(`0002_security_rls.sql`, `0004_notifications_blocking.sql`), and a "Block"
+button on every other user's profile view that calls it.
 
 ### Live streaming ("Go live") — WORKING, architecturally fragile
 - Fully peer-to-peer WebRTC, signaled over a Supabase Realtime broadcast
@@ -205,15 +207,17 @@ ready for a "Block" button to be added to the profile view.
   infrastructure — an SFU/TURN service — outside the scope of "reconstruct
   the repo behind the existing product").
 
-### Account deletion / deactivation — **MISSING**
+### Account deletion / deactivation — **MISSING at audit time, now FIXED**
 No delete-account, deactivate, or "logout everywhere" UI or backend call
-anywhere in the shipped app. Added `profiles.account_status`
-(`active`/`deactivated`/`suspended`/`banned`), self-service
-`deactivate_my_account()` / `reactivate_my_account()` RPCs, and a
+anywhere in the originally shipped app. This repo added
+`profiles.account_status` (`active`/`deactivated`/`suspended`/`banned`),
+self-service `deactivate_my_account()` / `reactivate_my_account()` RPCs, a
 `delete-account` Supabase Edge Function that does real, permanent,
 cascading deletion (auth user → all owned rows via FK cascade → storage
-objects) using the service-role key server-side only. See
-`supabase/functions/delete-account/`.
+objects) using the service-role key server-side only (see
+`supabase/functions/delete-account/`), and two buttons on the own-profile
+view ("Deactivate my account" / "Delete my account permanently") that call
+them.
 
 ### Rate limiting — **MISSING** (entirely)
 Nothing in the frontend throttles posting, liking, following, commenting,
