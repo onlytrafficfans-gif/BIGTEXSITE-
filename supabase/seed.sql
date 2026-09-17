@@ -1,0 +1,14 @@
+-- supabase/seed.sql
+-- Dev-only seed data, applied by `supabase db reset` against your LOCAL
+-- Supabase stack. Never run this against production -- it is not part of
+-- the migrations/ directory and `supabase db push` will not apply it.
+--
+-- Requires that at least one real auth.users row already exists locally
+-- (sign up once through the app at http://localhost:54321 after running
+-- `supabase start`), because profiles_data.id is a foreign key to
+-- auth.users and there is no safe way to fabricate auth users from plain
+-- SQL. This file intentionally seeds nothing on its own; use it as a
+-- template once you have a local user id to attach sample posts to:
+--
+-- insert into public.posts (user_id, media_url, storage_path, media_type, caption, post_kind)
+-- values ('00000000-0000-0000-0000-000000000000', 'https://picsum.photos/seed/texx1/800', 'seed/texx1.jpg', 'image', 'Hello TEXX SOCIAL', 'post');
