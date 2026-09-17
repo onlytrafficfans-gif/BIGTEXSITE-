@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>TEXX SOCIAL</title>
+  <meta name="description" content="TEXX SOCIAL — share your moments, build your circle, discover creators, reels, music and live content." />
+  <link rel="canonical" href="https://www.texxsocial.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TEXX SOCIAL" />
+  <meta property="og:title" content="TEXX SOCIAL" />
+  <meta property="og:description" content="Share your moments. Build your circle." />
+  <meta property="og:url" content="https://www.texxsocial.com/" />
+  <meta property="og:image" content="https://www.texxsocial.com/texx-social-share-v2.jpg" />
+  <meta property="og:image:url" content="https://www.texxsocial.com/texx-social-share-v2.jpg" />
+  <meta property="og:image:secure_url" content="https://www.texxsocial.com/texx-social-share-v2.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="TEXX SOCIAL logo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.texxsocial.com/" />
+  <meta name="twitter:domain" content="www.texxsocial.com" />
+  <meta name="twitter:title" content="TEXX SOCIAL" />
+  <meta name="twitter:description" content="Share your moments. Build your circle." />
+  <meta name="twitter:image" content="https://www.texxsocial.com/texx-social-share-v2.jpg" />
+  <meta name="twitter:image:alt" content="TEXX SOCIAL logo" />
+  <meta itemprop="image" content="https://www.texxsocial.com/texx-social-share-v2.jpg" />
+  <link rel="icon" type="image/png" href="/assets/texx-icon.png" />
+  <link rel="apple-touch-icon" href="/assets/texx-icon.png" />
+  <meta name="description" content="TEXX SOCIAL — share your moments, videos, and your world." />
+    <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <section id="authView" class="auth-shell">
+    <div class="auth-brand">
+      <div class="brand-logo-wrap"><img src="/assets/texx-logo.jpg" alt="TEXX SOCIAL" class="brand-logo auth-logo-mark" /></div>
+      <p>Share your moments. Build your circle.</p>
+    </div>
+    <div class="auth-card">
+      <div class="auth-tabs" role="tablist">
+        <button id="showLogin" class="auth-tab active" type="button" aria-controls="loginForm" aria-selected="true">Log in</button>
+        <button id="showSignup" class="auth-tab" type="button" aria-controls="signupForm" aria-selected="false">Join</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <label>Email<input id="loginEmail" type="email" autocomplete="email" required placeholder="you@example.com" /></label>
+        <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required minlength="6" placeholder="Your password" /></label>
+        <button id="loginBtn" class="primary" type="submit">Log in</button>
+        <button id="forgotBtn" class="text-btn" type="button">Forgot password?</button>
+      </form>
+
+      <form id="signupForm" class="auth-form hidden">
+        <label>Email<input id="signupEmail" type="email" autocomplete="email" required placeholder="you@example.com" /></label>
+        <label>@ Username
+          <div class="username-field"><span>@</span><input id="signupUsername" type="text" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" placeholder="yourname" /></div>
+        </label>
+        <label>Password<input id="signupPassword" type="password" autocomplete="new-password" required minlength="6" placeholder="6+ characters" /></label>
+        <label>Date of birth<input id="signupBirthDate" type="date" required /></label>
+        <button id="signupBtn" class="primary" type="submit">Create account</button>
+        <p class="form-note">TEXX SOCIAL is for ages 15+. No nudity or sexual content, graphic violence, hate or harassment, drug/gambling promotion, bullying, doxxing, or sharing private information.</p>
+      </form>
+    </div>
+  </section>
+
+  <div id="appView" class="app hidden">
+    <header class="mobile-header">
+      <div class="brand-logo-wrap"><img src="/assets/texx-icon.png" alt="TEXX SOCIAL" class="brand-logo mobile-logo-mark" /></div>
+      <div class="header-actions">
+        <button class="mobile-discover-btn" data-view="discover" aria-label="Discover people"><span>⌕</span><b>Discover</b></button>
+        <button class="mobile-message-btn" data-view="messages" aria-label="Messages">✉</button>
+        <button id="newPostTop" class="icon-btn" aria-label="Create post">＋</button>
+        <button id="logoutTop" class="icon-btn" aria-label="Log out">↪</button>
+      </div>
+    </header>
+
+    <aside class="side-nav">
+      <div class="brand-logo-wrap"><img src="/assets/texx-logo.jpg" alt="TEXX SOCIAL" class="brand-logo side-logo-mark" /></div>
+      <nav>
+        <button class="nav-btn active" data-view="feed"><span>⌂</span><b>Home</b></button>
+        <button class="nav-btn" data-view="reels"><span>▶</span><b>Reels</b></button>
+        <button class="nav-btn" data-view="discover"><span>⌕</span><b>Discover</b></button>
+        <button class="nav-btn" data-view="messages"><span>✉</span><b>Messages</b></button>
+        <button id="newPostSide" class="nav-btn"><span>＋</span><b>Create</b></button>
+        <button class="nav-btn" data-view="profile"><span>◎</span><b>Profile</b></button>
+      </nav>
+      <button id="logoutSide" class="nav-btn bottom"><span>↪</span><b>Log out</b></button>
+    </aside>
+
+    <main class="main-column">
+      <section id="feedView" class="screen">
+        <div class="feed-title-row"><h1>Home</h1><button id="refreshFeed" class="text-btn">Refresh</button></div>
+        <div id="profileStrip" class="profile-strip" aria-label="People on TEXX SOCIAL"></div>
+        <div id="feed" class="feed"></div>
+        <div id="feedEmpty" class="empty hidden"><h2>Your feed is ready</h2><p>Follow creators or make the first post.</p><button class="primary" id="emptyCreate">Create a post</button></div>
+      </section>
+
+      <section id="reelsView" class="screen hidden">
+        <div class="screen-head"><h1>Reels</h1><p>Short-form video from the TEXX SOCIAL community.</p></div>
+        <div class="create-reel-cta"><button id="createReelBtn" class="primary" type="button">＋ Create a reel</button></div>
+        <div id="reelsFeed" class="reels-feed"></div>
+      </section>
+
+      <section id="discoverView" class="screen hidden">
+        <div class="screen-head"><h1>Discover</h1><p>Find people to follow on TEXX SOCIAL.</p></div>
+        <div class="search-wrap"><span>⌕</span><input id="peopleSearch" type="search" placeholder="Search @username" /></div>
+        <div id="peopleList" class="people-list"></div>
+      </section>
+
+      <section id="messagesView" class="screen hidden">
+        <div id="messagesShell" class="messages-shell">
+          <div class="messages-list-pane">
+            <div class="messages-head"><h1>Messages</h1><button id="newMessageBtn" class="messages-new" type="button">New</button></div>
+            <div id="threadList" class="thread-list"></div>
+          </div>
+          <div id="chatPane" class="chat-pane">
+            <div class="chat-placeholder">Choose a conversation to start messaging.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profileView" class="screen hidden">
+        <div id="profilePanel"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+      <button class="bottom-btn active" data-view="feed"><span>⌂</span><small>Home</small></button>
+      <button class="bottom-btn" data-view="reels"><span>▶</span><small>Reels</small></button>
+      <button id="newPostBottom" class="bottom-btn create"><span>＋</span><small>Create</small></button>
+      <button class="bottom-btn" data-view="profile"><span>◎</span><small>Profile</small></button>
+    </nav>
+  </div>
+
+  <div id="composer" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="composerTitle">
+    <div class="modal-card composer-card">
+      <div class="modal-head"><button id="closeComposer" class="icon-btn">×</button><h2 id="composerTitle">New post</h2><button id="publishBtn" class="share-btn" disabled>Share</button></div>
+      <div class="composer-body">
+        <label class="upload-drop" for="mediaInput" id="uploadDrop">
+          <input id="mediaInput" type="file" accept="image/*,video/mp4,video/quicktime,video/webm" multiple hidden />
+          <div id="pickerPrompt"><div class="upload-icon">↑</div><strong>Choose a photo or video</strong><span>Images up to 15 MB · Videos up to 100 MB</span></div>
+          <img id="imagePreview" class="media-preview hidden" alt="Selected preview" />
+          <video id="videoPreview" class="media-preview hidden" controls playsinline></video>
+        </label>
+        <div class="composer-fields">
+          <div class="composer-mode" role="tablist" aria-label="Post type">
+            <button id="modePost" class="active" type="button">Post</button>
+            <button id="modeReel" type="button">Reel</button>
+          </div>
+          <textarea id="captionInput" maxlength="2200" placeholder="Write a caption…"></textarea>
+          <div id="videoCoverTools" class="cover-tools hidden">
+            <div class="cover-head"><strong>Video cover</strong><span>Choose a custom image to use as the thumbnail for your video post.</span></div>
+            <div class="cover-picker">
+              <div id="coverPlaceholder" class="cover-placeholder">No custom cover selected yet.</div>
+              <img id="coverPreview" class="cover-preview hidden" alt="Video cover preview" />
+            </div>
+            <div class="cover-actions">
+              <input id="coverInput" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+              <button id="chooseCoverBtn" class="secondary" type="button">Choose cover image</button>
+              <button id="removeCoverBtn" class="secondary hidden" type="button">Remove cover</button>
+            </div>
+            <div class="cover-note">JPG, PNG, or WebP · max 10 MB</div>
+          </div>
+          <div id="editsTools" class="edits-tools hidden">
+            <h3>Build with Edits</h3>
+            <p>Select photos and videos, send them to Instagram's Edits app, then import the finished Reel back into TEXX SOCIAL.</p>
+            <div id="editsAssets" class="edits-assets"></div>
+            <div id="editsCount" class="edits-count">No source clips selected.</div>
+            <div class="edits-actions">
+              <button id="selectReelAssetsBtn" class="secondary" type="button">Select photos + videos</button>
+              <button id="sendToEditsBtn" class="secondary" type="button" disabled>Edit in Edits</button>
+              <button id="importEditsBtn" class="primary" type="button">Import finished Reel</button>
+            </div>
+            <div class="cover-note">On supported phones, “Edit in Edits” opens the share sheet. Choose Edits if it appears.</div>
+          </div>
+          <input id="editsImportInput" type="file" accept="video/mp4,video/quicktime,video/webm,image/jpeg,image/png,image/webp" hidden />
+          <div id="musicTools" class="music-tools hidden">
+            <h3>Add streaming music</h3>
+            <p>Search by artist or song name, choose a track, then choose where listeners should open it. TEXX SOCIAL links to legal streaming services and does not copy or download the song.</p>
+            <select id="musicProvider" aria-label="Music platform">
+              <option value="apple_music">Apple Music</option>
+              <option value="spotify">Spotify</option>
+              <option value="youtube_music">YouTube Music</option>
+              <option value="soundcloud">SoundCloud</option>
+            </select>
+            <div class="music-search-row">
+              <input id="musicSearch" type="search" maxlength="120" placeholder="Search artist or song…" autocomplete="off" />
+              <button id="musicSearchBtn" type="button">Search</button>
+            </div>
+            <div id="musicSearchStatus" class="cover-note">Try an artist name, song title, or both.</div>
+            <div id="musicResults" class="music-results"></div>
+            <div id="musicSelected" class="music-selected hidden"></div>
+            <div id="musicClipEditor" class="music-clip-editor hidden">
+              <div class="cover-head"><strong>Choose song section</strong><span>Select where the preview starts. TEXX SOCIAL uses the available licensed preview clip.</span></div>
+              <div class="music-clip-row">
+                <input id="musicClipStart" type="range" min="0" max="27" value="0" step="1" aria-label="Song preview start time" />
+                <span id="musicClipTime" class="music-clip-time">0s – 15s</span>
+              </div>
+              <div class="music-clip-row">
+                <input id="musicClipDuration" type="range" min="3" max="30" value="15" step="1" aria-label="Song preview duration" />
+                <span id="musicClipDurationLabel" class="music-clip-time">15 sec</span>
+              </div>
+              <button id="previewMusicClipBtn" class="music-preview-btn" type="button">▶ Preview selected section</button>
+              <audio id="composerMusicPreview" preload="metadata"></audio>
+            </div>
+            <button id="musicManualToggle" class="music-manual-toggle" type="button">Already have a streaming link? Add it manually</button>
+            <div id="musicManualFields" class="music-manual-fields hidden">
+              <input id="musicTitle" maxlength="120" placeholder="Song title" />
+              <input id="musicArtist" maxlength="120" placeholder="Artist" />
+              <input id="musicUrl" class="music-url" type="url" maxlength="500" placeholder="Streaming link" />
+            </div>
+          </div>
+          <label class="safety-check"><input id="safeContentCheck" type="checkbox" /> <span>I confirm this post is appropriate for a 15+ community.</span></label>
+          <div class="composer-meta"><span id="fileLabel">No media selected</span><span id="captionCount">0 / 2200</span></div>
+          <button id="changeMedia" class="secondary hidden" type="button">Choose different media</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="shareMessageModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="shareMessageTitle">
+    <div class="modal-card share-message-card">
+      <div class="modal-head"><button id="closeShareMessage" class="icon-btn">×</button><h2 id="shareMessageTitle">Share to Messages</h2><span></span></div>
+      <div class="share-message-body">
+        <div id="shareContentPreview" class="share-preview"></div>
+        <input id="shareUserSearch" class="new-message-search" type="search" placeholder="Search @username" autocomplete="off" />
+        <div id="sharePeople" class="share-people"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="commentsModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card comments-card">
+      <div class="modal-head"><button id="closeComments" class="icon-btn">×</button><h2>Comments</h2><span></span></div>
+      <div id="commentsList" class="comments-list"></div>
+      <form id="commentForm" class="comment-form"><input id="commentInput" maxlength="500" placeholder="Add a comment…" required /><button type="submit">Post</button></form>
+    </div>
+  </div>
+
+
+  <div id="liveModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="liveTitle">
+    <div class="modal-card live-modal-card">
+      <div class="live-stage">
+        <video id="liveVideo" autoplay playsinline></video>
+        <div class="live-overlay"></div>
+        <div class="live-top"><span class="live-pill" id="liveStatus">LIVE</span><button id="closeLive" class="live-close" aria-label="Close live">×</button></div>
+        <div class="live-bottom">
+          <input id="liveTitle" maxlength="80" placeholder="Add a live title…" />
+          <button id="startLiveBtn" class="live-action danger">Go live</button>
+          <button id="endLiveBtn" class="live-action danger hidden">End live</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="/js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
